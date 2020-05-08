@@ -1,10 +1,9 @@
-package main
+package day3
 
 import (
 	"bufio"
 	"fmt"
 	"log"
-	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -94,7 +93,7 @@ func findMax(a int, b int) (c int) {
 }
 
 // O(n^2) search between each lines and finding intersections
-func revertNumber(x int) (int) {
+func revertNumber(x int) int {
 	if x < 0 {
 		return -x
 	}

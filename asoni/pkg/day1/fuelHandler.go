@@ -61,5 +61,5 @@ func main() {
 	data := parseInputFile("day-1-input.txt")
 	// totalFuel := day1Part1(data)
 	totalFuel := day1Part2(data)
-	fmt.Println("Total Fuel =", totalFuel) 
+	fmt.Println("Total Fuel =", totalFuel)
 }
