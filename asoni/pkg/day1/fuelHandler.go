@@ -1,4 +1,4 @@
-package day1
+package main
 
 import (
 	"bufio"
@@ -60,6 +60,7 @@ func main() {
 
 	data := parseInputFile("day-1-input.txt")
 	// totalFuel := day1Part1(data)
+	// fmt.Println("Day 1 Part 1: ", totalFuel)
 	totalFuel := day1Part2(data)
-	fmt.Println("Total Fuel =", totalFuel)
+	fmt.Println("Day 2 Part 2:", totalFuel)
 }

@@ -92,7 +92,7 @@ func main() {
 	fmt.Println("Day 4: Secure Container")
 
 	// input := "278384-824795"
-	input := "264360-746325"
+	input := "172851-675869"
 	inputRange := strings.Split(input, "-")
 	min, _ := strconv.Atoi(inputRange[0])
 	max, _ := strconv.Atoi(inputRange[1])
