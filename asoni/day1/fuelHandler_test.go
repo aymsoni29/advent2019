@@ -9,7 +9,7 @@ import (
 
 func TestParseInputFile(t *testing.T) {
 	expected := []int{1, 2, 3}
-	actual := parseInputFile("day-1-input.txt")
+	actual := parseInputFile("testFile.txt")
 
 	if !reflect.DeepEqual(expected, actual) {
 		t.Error("Output not as expected")
@@ -28,11 +28,34 @@ func BenchmarkParseInputFile(b *testing.B) {
 }
 
 func TestCalculateFuel(t *testing.T) {
-	testCases := []int{-1, 0, 1, 3, 6}
-	expectedResults := []int{-2, -2, -2, -1, 0}
+	testCases := []struct {
+		input  int
+		output int
+	}{
+		{
+			input:  -1,
+			output: -2,
+		},
+		{
+			input:  0,
+			output: -2,
+		},
+		{
+			input:  1,
+			output: -2,
+		},
+		{
+			input:  3,
+			output: -1,
+		},
+		{
+			input:  6,
+			output: 0,
+		},
+	}
 
-	for i, val := range testCases {
-		assert.Equal(t, expectedResults[i], calculateFuel(val), "Expected output different from actual output")
+	for i := range testCases {
+		assert.Equal(t, testCases[i].output, calculateFuel(testCases[i].input))
 	}
 }
 
