@@ -1,4 +1,4 @@
-package main
+package day1
 
 import (
 	"bufio"
@@ -12,7 +12,7 @@ func parseInputFile(filename string) []int {
 	var data []int
 	file, err := os.Open(filename)
 	if err != nil {
-		fmt.Println("Failed opening file: %s", err)
+		fmt.Printf("Failed opening file: %s", err)
 	}
 	defer file.Close()
 
@@ -28,6 +28,7 @@ func parseInputFile(filename string) []int {
 		panic(err)
 	}
 
+	fmt.Println(data)
 	return data
 }
 
@@ -59,8 +60,8 @@ func day1Part2(massData []int) (fuel int) {
 func main() {
 
 	data := parseInputFile("day-1-input.txt")
-	// totalFuel := day1Part1(data)
-	// fmt.Println("Day 1 Part 1: ", totalFuel)
-	totalFuel := day1Part2(data)
+	totalFuel := day1Part1(data)
+	fmt.Println("Day 1 Part 1: ", totalFuel)
+	totalFuel = day1Part2(data)
 	fmt.Println("Day 2 Part 2:", totalFuel)
 }
