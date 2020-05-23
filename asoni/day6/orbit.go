@@ -14,7 +14,7 @@ func parseInputFile(filename string) []string {
 	file, err := os.Open(filename)
 
 	if err != nil {
-		fmt.Println("Failed opening file: %s", err)
+		fmt.Printf("Failed opening file: %s", err)
 	}
 
 	defer file.Close()
