@@ -93,5 +93,5 @@ func Test_adjacentDigits(t *testing.T) {
 			assert.Equal(t, tc.expectedAnswer, ans)
 		})
 	}
-	
+
 }

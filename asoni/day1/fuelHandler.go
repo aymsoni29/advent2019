@@ -27,8 +27,6 @@ func parseInputFile(filename string) []int {
 	if err := scanner.Err(); err != nil {
 		panic(err)
 	}
-
-	fmt.Println(data)
 	return data
 }
 

@@ -1,4 +1,4 @@
-package main
+package day5
 
 import (
 	"encoding/csv"
@@ -7,6 +7,7 @@ import (
 	"os"
 	"strconv"
 )
+
 const (
 	inputValue = 5
 )
@@ -51,7 +52,7 @@ func runOpCode(ind int, i *[]int) int {
 	// TIL That is how you reference pointers - doing intData[index] will result in an error (cannot index variable of type *[]int)
 	// For more info, see - https://flaviocopes.com/golang-does-not-support-indexing/
 
-	opCode := (*i)[ind]%100
+	opCode := (*i)[ind] % 100
 
 	switch (*i)[ind] {
 
@@ -67,7 +68,7 @@ func runOpCode(ind int, i *[]int) int {
 	case 3:
 		(*i)[(*i)[ind+1]] = inputValue
 		return 2
-	
+
 	case 4:
 		fmt.Println("Output:", (*i)[(*i)[ind+1]])
 		return 2
