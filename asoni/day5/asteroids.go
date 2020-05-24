@@ -1,4 +1,4 @@
-package main
+package day5
 
 import (
 	"encoding/csv"
@@ -8,12 +8,9 @@ import (
 	"strconv"
 )
 
-// Position 0 - opcode (1,2,99)
-// Unknown opcode - something went wrong
-// Opcode 1 - Add next two indices and store result at position (number in immediate 3rd index)
-// Opcode 2 - Multiply next two indices and store result at position (number in immediate 3rd index)
-// Opcode 99 - Halt the program
-// Once you're done processing an opcode, move to the next one by stepping forward 4 positions.
+const (
+	inputValue = 5
+)
 
 func readCsvFile(filePath string) []string {
 	// Load a csv file.
@@ -50,36 +47,49 @@ func parseData(stringData []string) []int {
 	return intData
 }
 
-func runOpCode(index int, intData *[]int) {
+func runOpCode(ind int, i *[]int) int {
+
 	// TIL That is how you reference pointers - doing intData[index] will result in an error (cannot index variable of type *[]int)
 	// For more info, see - https://flaviocopes.com/golang-does-not-support-indexing/
-	switch (*intData)[index] {
+
+	// opCode := (*i)[ind] % 100
+
+	switch (*i)[ind] {
 
 	// Opcode list
 	case 1:
-		(*intData)[(*intData)[index+3]] = (*intData)[(*intData)[index+1]] + (*intData)[(*intData)[index+2]]
-		return
+		(*i)[(*i)[ind+3]] = (*i)[(*i)[ind+1]] + (*i)[(*i)[ind+2]]
+		return 4
 
 	case 2:
-		(*intData)[(*intData)[index+3]] = (*intData)[(*intData)[index+1]] * (*intData)[(*intData)[index+2]]
-		return
+		(*i)[(*i)[ind+3]] = (*i)[(*i)[ind+1]] * (*i)[(*i)[ind+2]]
+		return 4
+
+	case 3:
+		(*i)[(*i)[ind+1]] = inputValue
+		return 2
+
+	case 4:
+		fmt.Println("Output:", (*i)[(*i)[ind+1]])
+		return 2
 
 	case 99:
-		return
+		return 4
 
 	default:
 		fmt.Println("Encountered unknown opcode")
-		return
+		return 4
 	}
 }
 
 func runIntcode(intData []int) []int {
-	for i := 0; i < len(intData); i += 4 {
+	var step int = 4
+	for i := 0; i < len(intData); i += step {
 		// Halt Program
 		if intData[i] == 99 {
 			return intData
 		}
-		runOpCode(i, &intData)
+		step = runOpCode(i, &intData)
 	}
 	return intData
 }
